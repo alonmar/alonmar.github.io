@@ -33,7 +33,7 @@ comments:
 staticman:
   allowedFields          :  ['name', 'email', 'url', 'message']
   branch                 : # "master"
-  commitMessage          :  "New comment by {fields.name}"
+  commitMessage          :  "New comment."
   filename               :  comment-{@timestamp}
   format                 :  "yml"
   moderation             :  true
@@ -45,7 +45,7 @@ staticman:
     date:
       type               :  "date"
       options:
-        format           :  "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
+        format           : # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
 reCaptcha:
   siteKey                :
   secret                 :
