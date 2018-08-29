@@ -84,7 +84,7 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
+  name             : "Alonso Melgar López"
   avatar           : "/images/bio-pic-2.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Data Science Portfolio"
   location         : "Your Location"
