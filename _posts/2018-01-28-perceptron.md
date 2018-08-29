@@ -1,5 +1,6 @@
 ---
 title: "Machine Learning Project: Perceptron"
+comments: true
 date: 2018-01-28
 tags: [machine learning, data science, neural network]
 header:
