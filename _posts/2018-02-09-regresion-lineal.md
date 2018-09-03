@@ -14,13 +14,20 @@ Esta será el inicio de una serie de ejemplos para poder comprender como es el f
 Regresion
 =========
 
-Una regresion es una tectnoa que con la ayuda de parametros (variables) ayuda en la prediccion de variables continuas
+Una regresion es una tecnica que con la ayuda de parametros (variables) ayuda en la prediccion de variables continuas
 
 esta regrecion es representada por:
 
-``` math
-a + b = c
-```
+*Y* = *β*<sub>0</sub> + *β*<sub>1</sub>*X* + *ϵ*
+
+-   Donde:
+    -   *Y* Variable dependiente
+    -   *X* Variable independiente
+    -   *β*<sub>0</sub> intercepto
+    -   *β*<sub>1</sub> Pendiente
+    -   *ϵ* error (todo aquello que no explica el modelo)
+
+La ecucacion anterior representa lo que se conoce como regresion lineal simple, ya que solo contamos con una solo *variable independiente*. En el caso de contar con muchas mas *variable independiente* la llamaremos regresion lineal multiple (es común usar un numero alto en modelos de machine learning). Tanto *β*<sub>0</sub> *β*<sub>1</sub> etc, se conocen como coeficientes
 
 Cargaremos los paquete necesarios
 
