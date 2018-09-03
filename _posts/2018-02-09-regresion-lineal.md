@@ -1,3 +1,14 @@
+---
+title: "Regresion lineal"
+comments: true
+date: 2018-09-02
+tags: [machine learning, data science]
+header:
+  image: "/images/perceptron/percept.jpg"
+excerpt: "Machine Learning, Data Science"
+mathjax: "true"
+---
+
 Esta será el inicio de una serie de ejemplos para poder comprender como es el funcionamiento de un algoritmo de machine learning comencemos con una simple regresion lineal.
 
 Regresion
@@ -21,15 +32,15 @@ library(magrittr)
 library(purrr)
 ```
 
-    ## 
+    ##
     ## Attaching package: 'purrr'
 
     ## The following object is masked from 'package:magrittr':
-    ## 
+    ##
     ##     set_names
 
     ## The following object is masked from 'package:data.table':
-    ## 
+    ##
     ##     transpose
 
 ``` r
