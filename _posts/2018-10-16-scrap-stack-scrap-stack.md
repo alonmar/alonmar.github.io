@@ -373,7 +373,7 @@ htmlwidgets::saveWidget(visNetwork,"visNetwork.html")
 
 
 
-<!--html_preserve--><!DOCTYPE html>
+<!--html_preserve-->
 <html>
 <head>
 <meta charset="utf-8" />
