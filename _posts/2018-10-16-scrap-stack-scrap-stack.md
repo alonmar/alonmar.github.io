@@ -9,7 +9,7 @@ excerpt: "Machine Learning, Data Science"
 mathjax: "true"
 ---
 
-##Scraping a stackoverflow
+## Scraping a stackoverflow
 
 Hace poco me encontraba platicando con un amigo, quien me preguntaba que actualmente que lenguaje de pregramacion con mas demanda, mi primer respuesta fue que en la ciencia de datos los mas demandados son Python y R, sin embargo en no hablaba para algo especifico como la ciencia de datos.
 
@@ -369,4 +369,4 @@ htmlwidgets::saveWidget(visNetwork,"visNetwork.html")
 # frameWidget(visNetwork, width = "100%")
 ```
 
- [grafo](scraping/visNetwork.html)
+ [grafo](https://raw.githubusercontent.com/alonmar/alonmar.github.io/master/_posts/scrap/visNetwork.html)
