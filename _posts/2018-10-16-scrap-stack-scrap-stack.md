@@ -369,4 +369,4 @@ htmlwidgets::saveWidget(visNetwork,"visNetwork.html")
 # frameWidget(visNetwork, width = "100%")
 ```
 
- [grafo](https://raw.githubusercontent.com/alonmar/alonmar.github.io/master/_posts/scrap/visNetwork.html)
+ [grafo2](https://github.com/alonmar/alonmar.github.io/blob/master/_posts/scrap/scrap-stack_files/figure-html/widgets/widget_unnamed-chunk-11.html)
