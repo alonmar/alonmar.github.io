@@ -1,0 +1,1 @@
+"0","muestra <- tabla_result %>% arrange(desc(count)) %>% head(150)"

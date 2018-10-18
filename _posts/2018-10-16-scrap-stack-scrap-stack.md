@@ -1,5 +1,5 @@
 ---
-title: "Rscrapinp22"
+title: "Rscrapinp2"
 comments: true
 date: 2018-09-02
 tags: [machine learning, data science]
@@ -9,7 +9,7 @@ excerpt: "Machine Learning, Data Science"
 mathjax: "true"
 ---
 
-#Scraping a stackoverflow
+##Scraping a stackoverflow
 
 Hace poco me encontraba platicando con un amigo, quien me preguntaba que actualmente que lenguaje de pregramacion con mas demanda, mi primer respuesta fue que en la ciencia de datos los mas demandados son Python y R, sin embargo en no hablaba para algo especifico como la ciencia de datos.
 
@@ -20,7 +20,8 @@ Lo que haremos es recolectar y organizar los temas mas recurrente en dicha pagin
 Estos son los paquete necesitaremos de igual manera usaremos un plugin de [google chrome](https://chrome.google.com/webstore/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb)(tambien disponible para firefox)
 
 
-```{r message=FALSE, warning=FALSE}
+
+```r
 library(tidyverse)
 library('rvest')
 library('dplyr')
@@ -31,18 +32,20 @@ Vicitemos la url [https://stackoverflow.com/tags?page=1&tab=popular](https://sta
 
 ![imagen 1](images/captura1.png)
 
-```{r}
-url <- 'https://stackoverflow.com/tags?page=1&tab=popular'
 
+```r
+url <- 'https://stackoverflow.com/tags?page=1&tab=popular'
 ```
 
-```{r}
+
+```r
 ### nombre de las columnas que crearemos
 names <- c("rank_lenguaje_name","rank_number_question")
 ```
 
 usamos selector de css para cada variable
-```{r}
+
+```r
 ### nombre de los nodos en el archivo html
 node_name <- c('.post-tag','.item-multiplier-count')
 ```
@@ -50,8 +53,8 @@ node_name <- c('.post-tag','.item-multiplier-count')
 Creamos la funcion info_extract la cual se encargara de estraer y convertir en un data frame los nodos que busquemos
 
 
-```{r}
 
+```r
 info_extract <- function(url,names,node_name) {
 
   #leemos la url
@@ -82,15 +85,26 @@ info_extract <- function(url,names,node_name) {
 
 
 
-```{r}
+
+```r
 extract <- info_extract(url,names,node_name)
 head(extract)
 ```
 
+```
+##   rank_lenguaje_name rank_number_question
+## 1         javascript              1700879
+## 2               java              1470919
+## 3                 c#              1253257
+## 4                php              1235664
+## 5            android              1144316
+## 6             python              1042420
+```
+
 Creamos la funcion related_tags para obtener un data.frame con los lenguajes que mas se relacionan con los lenguajes populares
 
-```{r}
 
+```r
 related_tags <- function(lenguaje) {
   # creamos esta bandera para identificar que es el primer ciclo for
   flag_first <- T
@@ -135,31 +149,155 @@ related_tags <- function(lenguaje) {
 }
 ```
 
-```{r}
+
+```r
 tabla_result <- related_tags(extract$rank_lenguaje_name)
 ```
 
-```{r}
+```
+## ----------------------
+##  Extrayendo:  javascript
+##  ======================
+## ----------------------
+##  Extrayendo:  java
+##  ======================
+## ----------------------
+##  Extrayendo:  c#
+##  ======================
+## ----------------------
+##  Extrayendo:  php
+##  ======================
+## ----------------------
+##  Extrayendo:  android
+##  ======================
+## ----------------------
+##  Extrayendo:  python
+##  ======================
+## ----------------------
+##  Extrayendo:  jquery
+##  ======================
+## ----------------------
+##  Extrayendo:  html
+##  ======================
+## ----------------------
+##  Extrayendo:  c++
+##  ======================
+## ----------------------
+##  Extrayendo:  ios
+##  ======================
+## ----------------------
+##  Extrayendo:  css
+##  ======================
+## ----------------------
+##  Extrayendo:  mysql
+##  ======================
+## ----------------------
+##  Extrayendo:  sql
+##  ======================
+## ----------------------
+##  Extrayendo:  asp.net
+##  ======================
+## ----------------------
+##  Extrayendo:  ruby-on-rails
+##  ======================
+## ----------------------
+##  Extrayendo:  c
+##  ======================
+## ----------------------
+##  Extrayendo:  objective-c
+##  ======================
+## ----------------------
+##  Extrayendo:  arrays
+##  ======================
+## ----------------------
+##  Extrayendo:  .net
+##  ======================
+## ----------------------
+##  Extrayendo:  r
+##  ======================
+## ----------------------
+##  Extrayendo:  angularjs
+##  ======================
+## ----------------------
+##  Extrayendo:  node.js
+##  ======================
+## ----------------------
+##  Extrayendo:  json
+##  ======================
+## ----------------------
+##  Extrayendo:  sql-server
+##  ======================
+## ----------------------
+##  Extrayendo:  iphone
+##  ======================
+## ----------------------
+##  Extrayendo:  swift
+##  ======================
+## ----------------------
+##  Extrayendo:  ruby
+##  ======================
+## ----------------------
+##  Extrayendo:  regex
+##  ======================
+## ----------------------
+##  Extrayendo:  ajax
+##  ======================
+## ----------------------
+##  Extrayendo:  django
+##  ======================
+## ----------------------
+##  Extrayendo:  excel
+##  ======================
+## ----------------------
+##  Extrayendo:  xml
+##  ======================
+## ----------------------
+##  Extrayendo:  asp.net-mvc
+##  ======================
+## ----------------------
+##  Extrayendo:  linux
+##  ======================
+## ----------------------
+##  Extrayendo:  database
+##  ======================
+## ----------------------
+##  Extrayendo:  wpf
+##  ======================
+```
+
+
+```r
 tabla_result %>% head()
 ```
 
-
-![pop](images/pop_js.png)
-
-![pop](images/pop_java.png)
-
-![pop](images/pop_py.png)
-
-![pop](images/pop_r.png)
-
-
-
-```{r}
-muestra <- tabla_result %>% arrange(desc(count)) %>% head(150)
-
+```
+##      popular second_tag  count
+## 1 javascript     jquery 516209
+## 2 javascript       html 314762
+## 3 javascript        css 145431
+## 4 javascript  angularjs 116238
+## 5 javascript        php 110673
+## 6 javascript    node.js  90698
 ```
 
-```{r}
+
+![pop](scraping/images/pop_js.png)
+
+![pop](scraping/images/pop_java.png)
+
+![pop](scraping/images/pop_py.png)
+
+![pop](scraping/images/pop_r.png)
+
+
+
+
+```r
+muestra <- tabla_result %>% arrange(desc(count)) %>% head(150)
+```
+
+
+```r
 library(htmlwidgets)
 library(visNetwork)
 library(tidygraph)
@@ -183,8 +321,26 @@ per_route <- muestra %>%
   summarise(weight = sum(count)) %>%
   ungroup()
 per_route
+```
 
+```
+## # A tibble: 150 x 3
+##    popular second_tag        weight
+##    <chr>   <chr>              <dbl>
+##  1 .net    c%23              169586
+##  2 ajax    javascript         88088
+##  3 ajax    jquery            107858
+##  4 ajax    php                56926
+##  5 android android-fragments  36820
+##  6 android android-intent     26447
+##  7 android android-layout     49381
+##  8 android android-studio     41316
+##  9 android java              218511
+## 10 android listview           48429
+## # ... with 140 more rows
+```
 
+```r
 edges <- per_route %>%
   left_join(nodes, by = c("popular" = "label")) %>%
   rename(from = id)
@@ -205,26 +361,12 @@ visNetwork <- visNetwork(nodes, edges) %>%
   visIgraphLayout(layout = "layout_with_fr") %>%
   visEdges(arrows = "middle")
 
-library(widgetframe)
-visNetwork
-frameWidget(visNetwork, width = "100%")
-```
-```{r}
+htmlwidgets::saveWidget(visNetwork,"visNetwork.html")
 
-```
 
-```{r}
-
+# library(widgetframe)
+# visNetwork
+# frameWidget(visNetwork, width = "100%")
 ```
 
-```{r}
-
-```
-
-```{r}
-
-```
-
-```{r}
-
-```
+ [grafo](scraping/visNetwork.html)
