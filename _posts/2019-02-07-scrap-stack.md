@@ -1,8 +1,12 @@
 ---
-title: "R Notebook"
-output:
-  html_document:
-    keep_md: yes
+title: "Scraping a stackoverflow"
+comments: true
+date: 2019-02-07
+tags: [machine learning, data science]
+header:
+  image: "/images/perceptron/percept.jpg"
+excerpt: "Machine Learning, Data Science"
+mathjax: "true"
 ---
 
 # Scraping a stackoverflow
