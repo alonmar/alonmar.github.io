@@ -9,7 +9,6 @@ excerpt: "Machine Learning, Data Science"
 mathjax: "true"
 ---
 
-# Scraping a stackoverflow
 
 Hace poco me encontraba platicando con un amigo, se encuentra muy interesado por aprender a programar, y la pregunta natural es ¿Qué lenguaje debería de aprender? mi primer respuesta fue que en la ciencia de datos los mas demandados son Python y R, y era obvia para mi esta respuesta ya que al ser mi formación como economista mi primer puerta de entrada a la programación fue por R, sin embargo él no hablaba para algo especifico como la ciencia de datos.
 
@@ -32,7 +31,7 @@ library(tidygraph)
 
 Visitemos la url [https://stackoverflow.com/tags?page=1&tab=popular](https://stackoverflow.com/tags?page=1&tab=popular) como podemos ver en esta url tiene un tag  "page=1" el cual nos sirve para identificar la pagina en la que estamos y el tag "tab=popular" lo que nos indica que está ordenado del mas popular al menos popular para nuestro ejemplo solo tomaremos los 36 primeros ranks(cada pagina contiene 36 tags)
 
-![](images/captura1.png)
+![](https://github.com/alonmar/scrap-stackoverflow/raw/master/images/captura1.png)
 
 
 ```r
@@ -42,10 +41,10 @@ url <- 'https://stackoverflow.com/tags?page=1&tab=popular'
 
 SelectorGadget nos ayuda a encontrar el nombre del nodo que nos interesa para la extracción de la información, como podemos ver en la siguiente imagen, después de seleccionar el plugin es posible seleccionar el elemento que nos interesa para ver el nombre del nodo, primero veamos el nombre del nodo que indica el tag para después elegir el nodo que indica el número de preguntas para ese tag
 
-![](images/scraping/captura3.png)
+![](https://github.com/alonmar/scrap-stackoverflow/raw/master/images/captura3.png)
 
 
-![](images/scraping/captura4.png)
+![](https://github.com/alonmar/scrap-stackoverflow/raw/master/images/captura4.png)
 
 Como vemos los nodos que nos importan son **".post-tag"** y **".item-multiplier-count"**
 
@@ -164,7 +163,7 @@ Básicamente lo que haremos es visitar uno a uno el URL correspondiente a cada t
 
 En esta dirección los nodos que nos importan son **".item-multiplier-count"** y **".js-gps-related-tags"**, nos indican cuantas veces el tag secundario se ah tageado junto al tag popular, después creamos un data frame con la información anterior para cada uno de los tags populares, recorriendo uno a uno los 36 tags populares.
 
-![](images/scraping/captura5.png)
+![](https://github.com/alonmar/scrap-stackoverflow/raw/master/images/captura5.png)
 
 
 ```r
@@ -379,17 +378,17 @@ htmlwidgets::saveWidget(visNetwork,"visNetwork.html")
 
 Después de ver las conexiones que existen entre los diferentes tags, vemos que **JavaScript**, **JQuery**, **HTML** y **PHP** son tecnologías de las mas populares y que se encuentran relacionadas con muchas tecnologías
 
-![](images/scraping/pop_js.png)
+![](https://github.com/alonmar/scrap-stackoverflow/raw/master/images/pop_js.png)
 
 También podemos ver como se agrupan las tecnologías como Android y java
-![](images/scraping/pop_java.png)
+![](https://github.com/alonmar/scrap-stackoverflow/raw/master/images/pop_java.png)
 
 Y hablando de ciencia de datos vemos como se relacionan Python con otras tecnologías, y al ser un lenguaje multipropósito es normal que la ciencia de datos no sea lo único a su alrededor, y mucho menos lo mas importante.
-![](images/scraping/pop_py.png)
+![](https://github.com/alonmar/scrap-stackoverflow/raw/master/images/pop_py.png)
 
 Y bueno ¿a todo esto donde se encuentra R?
 
-![](images/scraping/pop_r.png)
+![](https://github.com/alonmar/scrap-stackoverflow/raw/master/images/pop_r.png)
 
 
 ok... ok....  quizás no se encuentra relacionado a muchas tecnologías (al menos no en el volumen necesario para destacar en este análisis) como los tags anteriores, pero esto no significa que no sea popular ya que se encuentra dentro de los 36 mas tageados
@@ -408,7 +407,7 @@ El web scraping es realmente divertido, ya que puedes obtener información que e
 htmltools::includeHTML("./visNetwork.html")
 ```
 
-<!--html_preserve--><!DOCTYPE html>
+<!--html_preserve-->
 <html>
 <head>
 <meta charset="utf-8" />
