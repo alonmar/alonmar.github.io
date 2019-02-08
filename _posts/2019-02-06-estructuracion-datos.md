@@ -9,7 +9,11 @@ excerpt: "Machine Learning, Data Science"
 mathjax: "true"
 ---
 
-Normalmente cuando uno se encuentra trabajando no se encuentran organizados o estructurados, y la mayor parte del tiempo se encuentra en la estructuración de estos, por lo que a continuación veremos como:
+El código completo lo encontraras [aquí](https://github.com/alonmar/estructuracion-datos/blob/master/swapi.Rmd)
+
+---
+
+Normalmente cuando uno se encuentra trabajando con datos no están organizados o estructurados, y la mayor parte del tiempo radica en la estructuración de estos, por lo que a continuación veremos como:
 
 -   Solicitar datos de una APIweb, ya que es normal que muchos datos se entreguen de esta manera
 -   Dar forma a datos en formato json para poder analizarlos, ya que muchas de las herramientas estadísticas funcionan con dataframes
@@ -25,25 +29,14 @@ Primero cargaremos las librerías necesarias
 library(tidyverse) #Estructuración de datos
 ```
 
-    ## -- Attaching packages ------------------------------------------------------------------------------------------------------- tidyverse 1.2.1 --
-
-    ## v ggplot2 3.1.0     v purrr   0.2.5
-    ## v tibble  1.4.2     v dplyr   0.7.8
-    ## v tidyr   0.8.1     v stringr 1.3.1
-    ## v readr   1.1.1     v forcats 0.3.0
-
-    ## -- Conflicts ---------------------------------------------------------------------------------------------------------- tidyverse_conflicts() --
-    ## x dplyr::filter() masks stats::filter()
-    ## x dplyr::lag()    masks stats::lag()
-
 ``` r
 library(rjson)     #Lectura de formato json
 library(httr)      #Estatus de la conexión a la api
 ```
 
-La api donde haremos la conexión es la de <https://swapi.co/> la cual tiene una base de datos de los personajes, planetas, razas etc. del universo de Star Wars.
+La api donde haremos la conexión es la de <https://swapi.co/> la cual tiene una base de datos de los personajes, planetas, razas etc. Del universo de Star Wars.
 
-Primero veremos de que manera estan estructurados los datos, nos apoyaremos en la [documentación](https://swapi.co/documentation) Necesitaremos esta información principal para saber cuentos elementos contiene cada base
+Primero veremos de que manera están estructurados los datos, nos apoyaremos en la [documentación](https://swapi.co/documentation). Necesitaremos esta información principalmente para saber cuentos elementos contiene cada base
 
 ``` r
 json_file <- "https://swapi.co/api/people/?page=1&format=json"
@@ -62,10 +55,10 @@ json_data$count
 
     ## [1] 87
 
-Como vemos son 87 por lo tanto consultaremos uno a uno la url correspondiente a cada personaje, y crearemos nuestro propio dataset, de esta manera se tendra un mejor control en la elaboracion del dataset
+Como vemos son 87 por lo tanto consultaremos uno a uno la url correspondiente a cada personaje, y crearemos nuestro propio dataset, de esta manera se tendrá un mejor control en la elaboración del dataset
 
 ``` r
-# Creamos una lista vacia para ir llenandola
+# Creamos una lista vacía para ir llenándola
 data <- list()
 count <- json_data$count
 
@@ -73,10 +66,10 @@ for (i in 1:count) {
 
 #Creamos la url
     url <- str_interp("https://swapi.co/api/people/${i}/?format=json")
-#Vemos el estatus de la conexion
+#Vemos el estatus de la conexión
     resp <- GET(url)$status_code
 
-  if(resp == 404) next #En caso de que dicha conexion nos regrese un estatus 404 pasaremos a la siguiente solicitud
+  if(resp == 404) next #En caso de que dicha conexión nos regrese un estatus 404 pasaremos a la siguiente solicitud
 
 # Guardamos en la lista
   data[[i]] <- fromJSON(file=url)
@@ -88,24 +81,6 @@ for (i in 1:count) {
   }
 ```
 
-    ## 6%
-    ## 11%
-    ## 17%
-    ## 23%
-    ## 29%
-    ## 34%
-    ## 40%
-    ## 46%
-    ## 52%
-    ## 57%
-    ## 63%
-    ## 69%
-    ## 75%
-    ## 80%
-    ## 86%
-    ## 92%
-    ## 98%
-    ## 100%
 
 Veamos la primer lista que contiene los datos de Luke Skywalker
 
@@ -164,7 +139,7 @@ data[[1]]
     ## $url
     ## [1] "https://swapi.co/api/people/1/"
 
-Muy bien todo salio como esperabamos, ahora crearemos una funcion para hacer la obtención de datos mas rapida, y poder elegir que categoria solicitaremos.
+Muy bien todo salió como esperábamos, ahora crearemos una función para hacer la obtención de datos mas rápida, y poder elegir que categoría solicitaremos.
 
 ``` r
  swapi <- function(resource) {
@@ -180,14 +155,13 @@ Muy bien todo salio como esperabamos, ahora crearemos una funcion para hacer la 
 
       #Creamos la url
           url <- str_interp("https://swapi.co/api/${resource}/${i}/?format=json")
-      #Vemos el estatus de la conexion
+      #Vemos el estatus de la conexión
           resp <- GET(url)$status_code
 
-        if(resp == 404) next #En caso de que dicha conexion nos regrese un estatus 404 pasaremos a la siguiente solicitud
+        if(resp == 404) next #En caso de que dicha conexión nos regrese un estatus 404 pasaremos a la siguiente solicitud
 
       # Guardamos en la lista
         data[[i]] <- fromJSON(file=url)
-
 
         if(i %% 5 == 0 | i == count ) cat(paste0(round(i/count*100),"% \n"))
 
@@ -198,7 +172,14 @@ Muy bien todo salio como esperabamos, ahora crearemos una funcion para hacer la 
        }
 ```
 
-Las posibles categorias de busqueda son: + films + people + planets + species + starships + vehicles
+Las posibles categorías de búsqueda son:
+
+-   films
+-   people
+-   planets
+-   species
+-   starships
+-   vehicles
 
 Comencemos con los personajes (people)
 
@@ -206,24 +187,6 @@ Comencemos con los personajes (people)
 personajes <-  swapi("people")
 ```
 
-    ## 6%
-    ## 11%
-    ## 17%
-    ## 23%
-    ## 29%
-    ## 34%
-    ## 40%
-    ## 46%
-    ## 52%
-    ## 57%
-    ## 63%
-    ## 69%
-    ## 75%
-    ## 80%
-    ## 86%
-    ## 92%
-    ## 98%
-    ## 100%
 
 Ahora con las razas(species)
 
@@ -231,14 +194,6 @@ Ahora con las razas(species)
 especie <-  swapi("species")
 ```
 
-    ## 14%
-    ## 27%
-    ## 41%
-    ## 54%
-    ## 68%
-    ## 81%
-    ## 95%
-    ## 100%
 
 Y por último los planetas(planets)
 
@@ -246,32 +201,21 @@ Y por último los planetas(planets)
 planeta <-  swapi("planets")
 ```
 
-    ## 8%
-    ## 16%
-    ## 25%
-    ## 33%
-    ## 41%
-    ## 49%
-    ## 57%
-    ## 66%
-    ## 74%
-    ## 82%
-    ## 90%
-    ## 98%
-    ## 100%
 
-Ya tenemos los datos que nos interesan sin embargo al provenir de un formato json o por así decirlo "Nosql", tendremo problemas al convertir en una forma estructura por lo tanto cambiaremos algunas cosas
+Ya tenemos los datos que nos interesan sin embargo al provenir de un formato json o por así decirlo "Nosql", tendremos problemas al convertir en una forma estructura por lo tanto cambiaremos algunas cosas
 
 ``` r
 # Pasamos de lista a dataframe
-personajes_df <- do.call(rbind, personajes)  %>%  data.frame()
 
-planeta_df <- do.call(rbind, planeta) %>% data.frame()
 
-especie_df <- do.call(rbind, especie) %>% data.frame()
+personajes_df <-  do.call(rbind, personajes) %>%  data.frame()
+
+planeta_df <- do.call(rbind,planeta)  %>%  data.frame()
+
+especie_df <- do.call(rbind,especie) %>%  data.frame()
 ```
 
-Si observamos por ejemplo el caso de Luke Skywalker veremos que en la columna de *films* se encuentran las url a cada una de las peliculas en las que aparece, sin embargo es mejor solo saber el numero de la pelicula y no la url, de manera que sea mas agradable a la vista
+Si observamos por ejemplo el caso de Luke Skywalker veremos que en la columna de *films* se encuentran las url a cada una de las películas en las que aparece, sin embargo es mejor solo saber el numero de la película y no la url, de manera que sea mas legible.
 
 ``` r
 personajes_df$films[[1]]
@@ -283,7 +227,7 @@ personajes_df$films[[1]]
 
 Por lo tanto haremos uso de las expresiones regulares y al paquete [stringr](https://resources.rstudio.com/rstudio-cheatsheets/stringr-cheat-sheet) incluido en tidyverse
 
-Crearemos una funcion que eliminara todos los caracteres exepto los números
+Crearemos una función que eliminara todos los caracteres excepto los números
 
 ``` r
 extract  <- function(variables) {
@@ -291,16 +235,20 @@ extract  <- function(variables) {
 }
 ```
 
-Reescribiremos ciertas variables aplicando la funcion antes hecha, crearemos la variable ID la cual es el número correspondiente a cada elemento
+Reescribiremos ciertas variables aplicando la función antes hecha, crearemos la variable ID la cual es el número correspondiente a cada elemento
 
 ``` r
-personajes_di <-  personajes_df %>% mutate(species = extract(species) , films =  extract(films),
+personajes_di <-  personajes_df %>% mutate(species = extract(species), films =  extract(films),
                                            homeworld = extract(homeworld),vehicles = extract(vehicles),
-                                           starships = extract(vehicles),id = extract(url))
+                                           starships = extract(vehicles),id_personajes = extract(url))
 
 
-especie_di <-  especie_df %>% mutate(homeworld = extract(homeworld),people =  extract(people),
-                                        films =  extract(films),id = extract(url) )
+especie_di <-  especie_df %>% mutate(homeworld = extract(homeworld), people =  extract(people),
+                                        films =  extract(films),id_especie = extract(url) )
+
+
+planeta_di <-  planeta_df %>% mutate(residents = extract(residents),films =  extract(films),
+                                     id_planeta = extract(url) )
 ```
 
 Veamos ahora
@@ -311,14 +259,16 @@ personajes_di$films[[1]]
 
     ## [1] "2,6,3,1,7"
 
-Muy bien ya esta en un mejor formato, es importante mencionar que las peliculas estan enumeradas de acuerdo al orden cronologico de estreno por lo tanto el número 1 hace referencia a "Episodio 4 - A New Hope" y no a "Episodio 1 - The Phantom Menace" (Obviamente esto no seria star wars sin el conflicto del orden de las peliculas)
+Muy bien ya está en un mejor formato, es importante mencionar que las películas están enumeradas de acuerdo al orden cronológico de estreno por lo tanto el número 1 hace referencia a "Episodio 4 - A New Hope" y no a "Episodio 1 - The Phantom Menace" (Obviamente esto no seria star wars sin el conflicto del orden de las películas)
 
 Perfecto ahora solo queda convertir todo en un dataframe de vectores, ya que actualmente son dataframes de listas
 
 ``` r
- personajes_ti <-  personajes_di %>% map_dfr(unlist)
+personajes_ti <-  personajes_di  %>% map_dfr(unlist)
 
- especie_ti <-  especie_di %>% map_dfr(unlist)
+especie_ti <-  especie_di %>% map_dfr(unlist)
+
+planeta_ti <-  planeta_di %>% map_dfr(unlist)
 
 
 personajes_ti %>% head()
@@ -335,7 +285,7 @@ personajes_ti %>% head()
     ## 6 Owen~ 178    120   brown, gr~ light      blue      52BBY      male  
     ## # ... with 9 more variables: homeworld <chr>, films <chr>, species <chr>,
     ## #   vehicles <chr>, starships <chr>, created <chr>, edited <chr>,
-    ## #   url <chr>, id <chr>
+    ## #   url <chr>, id_personajes <chr>
 
 ``` r
 especie_ti %>% head()
@@ -352,31 +302,74 @@ especie_ti %>% head()
     ## 6 Yoda~ mammal         sentient    66             green, yel~ brown, whi~
     ## # ... with 10 more variables: eye_colors <chr>, average_lifespan <chr>,
     ## #   homeworld <chr>, language <chr>, people <chr>, films <chr>,
-    ## #   created <chr>, edited <chr>, url <chr>, id <chr>
+    ## #   created <chr>, edited <chr>, url <chr>, id_especie <chr>
 
-Ahora el paso final! darle un formato a los NA ya que tienen la forma de "n/a" "unknown" o simplemente es un caracter vacío
+``` r
+planeta_ti %>% head()
+```
+
+    ## # A tibble: 6 x 15
+    ##   name  rotation_period orbital_period diameter climate gravity terrain
+    ##   <chr> <chr>           <chr>          <chr>    <chr>   <chr>   <chr>  
+    ## 1 Tato~ 23              304            10465    arid    1 stan~ desert
+    ## 2 Alde~ 24              364            12500    temper~ 1 stan~ grassl~
+    ## 3 Yavi~ 24              4818           10200    temper~ 1 stan~ jungle~
+    ## 4 Hoth  23              549            7200     frozen  1.1 st~ tundra~
+    ## 5 Dago~ 23              341            8900     murky   N/A     swamp,~
+    ## 6 Besp~ 12              5110           118000   temper~ 1.5 (s~ gas gi~
+    ## # ... with 8 more variables: surface_water <chr>, population <chr>,
+    ## #   residents <chr>, films <chr>, created <chr>, edited <chr>, url <chr>,
+    ## #   id_planeta <chr>
+
+Ahora es momento de darle un formato homogéneo a los NAs ya que tienen la forma de "n/a" "unknown" o simplemente es un caracter vacío
 
 ``` r
 personajes_ti[personajes_ti == "n/a"|personajes_ti =="unknown"|personajes_ti ==""] <- NA
 especie_ti[especie_ti == "n/a"|especie_ti =="unknown"|especie_ti ==""] <- NA
+planeta_ti[planeta_ti == "n/a"|planeta_ti =="unknown"|planeta_ti ==""] <- NA
 ```
+
+Y ahora el paso final! convertir las variables que hasta este momento eran del tipo caracter a integer
+
+``` r
+planeta_ti[c(2,3,4,8,9,15)] <- lapply(planeta_ti[c(2,3,4,8,9,15)], as.integer)
+```
+
+    ## Warning in lapply(planeta_ti[c(2, 3, 4, 8, 9, 15)], as.integer): NAs
+    ## introduced by coercion to integer range
+
+``` r
+especie_ti[c(4,8,16)] <- lapply(especie_ti[c(4,8,16)], as.integer)
+```
+
+    ## Warning in lapply(especie_ti[c(4, 8, 16)], as.integer): NAs introducidos
+    ## por coerción
+
+``` r
+personajes_ti[c(2,3,17)] <- lapply(personajes_ti[c(2,3,17)], as.integer)
+```
+
+    ## Warning in lapply(personajes_ti[c(2, 3, 17)], as.integer): NAs introducidos
+    ## por coerción
+
+Y este es el resultado
 
 ``` r
 personajes_ti %>% head()
 ```
 
     ## # A tibble: 6 x 17
-    ##   name  height mass  hair_color skin_color eye_color birth_year gender
-    ##   <chr> <chr>  <chr> <chr>      <chr>      <chr>     <chr>      <chr>
-    ## 1 Luke~ 172    77    blond      fair       blue      19BBY      male  
-    ## 2 C-3PO 167    75    <NA>       gold       yellow    112BBY     <NA>  
-    ## 3 R2-D2 96     32    <NA>       white, bl~ red       33BBY      <NA>  
-    ## 4 Dart~ 202    136   none       white      yellow    41.9BBY    male  
-    ## 5 Leia~ 150    49    brown      light      brown     19BBY      female
-    ## 6 Owen~ 178    120   brown, gr~ light      blue      52BBY      male  
+    ##   name  height  mass hair_color skin_color eye_color birth_year gender
+    ##   <chr>  <int> <int> <chr>      <chr>      <chr>     <chr>      <chr>
+    ## 1 Luke~    172    77 blond      fair       blue      19BBY      male  
+    ## 2 C-3PO    167    75 <NA>       gold       yellow    112BBY     <NA>  
+    ## 3 R2-D2     96    32 <NA>       white, bl~ red       33BBY      <NA>  
+    ## 4 Dart~    202   136 none       white      yellow    41.9BBY    male  
+    ## 5 Leia~    150    49 brown      light      brown     19BBY      female
+    ## 6 Owen~    178   120 brown, gr~ light      blue      52BBY      male  
     ## # ... with 9 more variables: homeworld <chr>, films <chr>, species <chr>,
     ## #   vehicles <chr>, starships <chr>, created <chr>, edited <chr>,
-    ## #   url <chr>, id <chr>
+    ## #   url <chr>, id_personajes <int>
 
 ``` r
 especie_ti %>% head()
@@ -384,18 +377,41 @@ especie_ti %>% head()
 
     ## # A tibble: 6 x 16
     ##   name  classification designation average_height skin_colors hair_colors
-    ##   <chr> <chr>          <chr>       <chr>          <chr>       <chr>      
-    ## 1 Human mammal         sentient    180            caucasian,~ blonde, br~
-    ## 2 Droid artificial     sentient    <NA>           <NA>        <NA>       
-    ## 3 Wook~ mammal         sentient    210            gray        black, bro~
-    ## 4 Rodi~ sentient       reptilian   170            green, blue <NA>       
-    ## 5 Hutt  gastropod      sentient    300            green, bro~ <NA>       
-    ## 6 Yoda~ mammal         sentient    66             green, yel~ brown, whi~
-    ## # ... with 10 more variables: eye_colors <chr>, average_lifespan <chr>,
+    ##   <chr> <chr>          <chr>                <int> <chr>       <chr>      
+    ## 1 Human mammal         sentient               180 caucasian,~ blonde, br~
+    ## 2 Droid artificial     sentient                NA <NA>        <NA>       
+    ## 3 Wook~ mammal         sentient               210 gray        black, bro~
+    ## 4 Rodi~ sentient       reptilian              170 green, blue <NA>       
+    ## 5 Hutt  gastropod      sentient               300 green, bro~ <NA>       
+    ## 6 Yoda~ mammal         sentient                66 green, yel~ brown, whi~
+    ## # ... with 10 more variables: eye_colors <chr>, average_lifespan <int>,
     ## #   homeworld <chr>, language <chr>, people <chr>, films <chr>,
-    ## #   created <chr>, edited <chr>, url <chr>, id <chr>
+    ## #   created <chr>, edited <chr>, url <chr>, id_especie <int>
 
-Concluciones
+``` r
+planeta_ti %>% head()
+```
+
+    ## # A tibble: 6 x 15
+    ##   name  rotation_period orbital_period diameter climate gravity terrain
+    ##   <chr>           <int>          <int>    <int> <chr>   <chr>   <chr>  
+    ## 1 Tato~              23            304    10465 arid    1 stan~ desert
+    ## 2 Alde~              24            364    12500 temper~ 1 stan~ grassl~
+    ## 3 Yavi~              24           4818    10200 temper~ 1 stan~ jungle~
+    ## 4 Hoth               23            549     7200 frozen  1.1 st~ tundra~
+    ## 5 Dago~              23            341     8900 murky   N/A     swamp,~
+    ## 6 Besp~              12           5110   118000 temper~ 1.5 (s~ gas gi~
+    ## # ... with 8 more variables: surface_water <int>, population <int>,
+    ## #   residents <chr>, films <chr>, created <chr>, edited <chr>, url <chr>,
+    ## #   id_planeta <int>
+
+Conclusiones
 ------------
 
-Sin duda alguna la estructuracion de una base de datos en la ciencia de datos es lo menos "glamuroso" sin embargo es el paso mas importate ya que sin datos que analizar, de nada sirve el ultimo algoritmo de deep learning, los datos en la vida real no se encuentran estructurados sin embargo aquí se mostraron formas para lograr estó, iniciando por una consulta de una API, modificando documentos Json hasta pasando por expreciones regulares y manejos de NAs incluso intentar explicar el conflicto del número en las peliculas de star wars.
+Sin duda alguna la estructuración de una base de datos en la ciencia de datos es lo menos "glamuroso" sin embargo es el paso mas importante ya que sin datos que analizar, de nada sirve el ultimo algoritmo de deeplearning, los datos en la vida real no se encuentran estructurados sin embargo aquí se mostraron formas para lograr esto, iniciando por una consulta de una API, modificando documentos Json hasta pasando por expresiones regulares y manejos de NAs incluso intentar explicar el conflicto del número en las películas de star wars.
+
+Te invito a que por tu cuenta hagas la solicitud a *films*, *starships*, *vehicles*. De tal manera que veas lo fácil que es!
+
+Fuentes:
+
+<https://www.tutorialspoint.com/r/r_json_files.htm> <https://github.com/Ironholds/rwars>

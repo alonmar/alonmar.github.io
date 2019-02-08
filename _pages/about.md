@@ -5,6 +5,5 @@ header:
   image: "/images/frac.jpg"
 ---
 
-Soy una buena persona.
-
-Etc, etc, etc
+Economista entusiasta de la tecnología y la Inteligencia artificial.
+Fascinado por los algoritmo de Machine Learning.
