@@ -1,7 +1,7 @@
 ---
 title: "Estructuración de datos"
 comments: true
-date: 2018-01-28
+date: 2019-02-06
 tags: [machine learning, data science]
 header:
   image: "/images/perceptron/percept.jpg"
