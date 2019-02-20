@@ -4,7 +4,7 @@ comments: true
 date: 2019-02-07
 tags: [machine learning, data science]
 header:
-  
+  image: ""
 excerpt: "Machine Learning, Data Science"
 mathjax: "true"
 ---
