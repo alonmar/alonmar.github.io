@@ -3,8 +3,8 @@ title: "Scraping a stackoverflow"
 comments: true
 date: 2019-02-07
 tags: [machine learning, data science]
-<!-- header:
-  image: "https://raw.githubusercontent.com/alonmar/scrap-stackoverflow/master/images/El%20rat%C3%B3n%20de%20biblioteca.jpg" -->
+header:
+  
 excerpt: "Machine Learning, Data Science"
 mathjax: "true"
 ---
