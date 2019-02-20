@@ -3,13 +3,15 @@ title: "Estructuración de datos"
 comments: true
 date: 2019-02-06
 tags: [machine learning, data science]
-header:
-  image: "https://raw.githubusercontent.com/alonmar/estructuracion-datos/master/image/baldo2.jpg"
 excerpt: "Machine Learning, Data Science"
 mathjax: "true"
 ---
+---
+<img src="https://raw.githubusercontent.com/alonmar/estructuracion-datos/master/image/baldo2.jpg" alt="Autorretrato" width="300px"/>
+
 Baldomero Romero Ressendi, Autorretrato
 ---
+
 El código completo lo encontraras [aquí](https://github.com/alonmar/estructuracion-datos/blob/master/swapi.Rmd)
 
 ---

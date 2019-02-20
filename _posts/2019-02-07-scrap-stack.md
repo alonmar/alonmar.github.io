@@ -6,7 +6,9 @@ tags: [machine learning, data science]
 excerpt: "Machine Learning, Data Science"
 mathjax: "true"
 ---
-<img src="https://raw.githubusercontent.com/alonmar/scrap-stackoverflow/master/images/El%20rat%C3%B3n%20de%20biblioteca.jpg" alt="El ratón de biblioteca " width="300px"/>
+---
+<img src="https://raw.githubusercontent.com/alonmar/scrap-stackoverflow/master/images/El%20rat%C3%B3n%20de%20biblioteca.jpg" alt="El ratón de biblioteca" width="300px"/>
+
 Carl Spitzweg, El ratón de biblioteca (1850)
 ---
 El código completo lo encontraras [aquí](https://github.com/alonmar/scrap-stackoverflow/blob/master/scrap-stack.Rmd)
