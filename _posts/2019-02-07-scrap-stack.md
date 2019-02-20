@@ -8,8 +8,7 @@ header:
 excerpt: "Machine Learning, Data Science"
 mathjax: "true"
 ---
-Carl Spitzweg, El ratón de biblioteca (1850)
-
+![Carl Spitzweg, El ratón de biblioteca (1850)](https://raw.githubusercontent.com/alonmar/scrap-stackoverflow/master/images/El%20rat%C3%B3n%20de%20biblioteca.jpg)
 ---
 El código completo lo encontraras [aquí](https://github.com/alonmar/scrap-stackoverflow/blob/master/scrap-stack.Rmd)
 
