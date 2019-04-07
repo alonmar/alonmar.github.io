@@ -1,5 +1,5 @@
 ---
-title: "K nearest neighbors (Con-comida)"
+title: "K nearest neighbors (Con comida)"
 comments: true
 date: 2019-02-06
 tags: [machine learning, data science]
