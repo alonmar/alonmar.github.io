@@ -99,10 +99,10 @@ Ya que tenemos las distancias ordenadas de menor a mayor basta con tomar los mas
 
 Ahora solo basta con observar la clase que mas se repite en los K vecinos seleccionados y !Felicidades! hemos clasificado la nueva observación.
 
-| clase   |                                                                                                               n|
-|:--------|---------------------------------------------------------------------------------------------------------------:|
-| a       |                                                                                                               2|
-| b       |                                                                                                               1|
+|clase|  n|
+|:----|--:|
+|a|2|
+|b|1|
 
  En este ejemplo vemos que el que mas se repite es la clase ***a*** por lo tanto nuestra figura pertenece a esta clase.
 
