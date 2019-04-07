@@ -112,11 +112,11 @@ Ahora solo basta con observar la clase que mas se repite en los K vecinos selecc
 
 Es importante mencionar que para el ejemplo anterior la forma en la que medimos las distancias fue mediante la distancia Euclidiana
 
-$\sqrt{\sum_{i=1}^{m}(x_{i}-y_{i})^{2}}$
+$$\sqrt{\sum_{i=1}^{m}(x_{i}-y_{i})^{2}}$$
 
 la cual es la mas utilizada sin embargo también se puede calcular mediante distancia Manhattan
 
-$\sum_{i=1}^{m}\left | x_{i}-y_{i} \right |$
+$$\sum_{i=1}^{m}\left | x_{i}-y_{i} \right |$$
 
 
 o mediante la distancia Hamming usualmente para identificar si un valor a cambiado o se mantiene igual
