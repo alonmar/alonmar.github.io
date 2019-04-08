@@ -343,8 +343,8 @@ htmltools::includeHTML("./visNetwork.html")
 </html><!--/html_preserve-->
 
 
-### Referencias
+### Fuentes:
 
-http://varianceexplained.org/r/year_data_scientist/
-https://www.jessesadler.com/post/network-analysis-with-r/
-https://www.analyticsvidhya.com/blog/2017/03/beginners-guide-on-web-scraping-in-r-using-rvest-with-hands-on-knowledge/
+<http://varianceexplained.org/r/year_data_scientist/>
+<https://www.jessesadler.com/post/network-analysis-with-r/>
+<https://www.analyticsvidhya.com/blog/2017/03/beginners-guide-on-web-scraping-in-r-using-rvest-with-hands-on-knowledge/>

@@ -415,6 +415,7 @@ Sin duda alguna la estructuración de una base de datos en la ciencia de datos e
 
 Te invito a que por tu cuenta hagas la solicitud a *films*, *starships*, *vehicles*. De tal manera que veas lo fácil que es!
 
-Fuentes:
+###Fuentes:
 
-<https://www.tutorialspoint.com/r/r_json_files.htm> <https://github.com/Ironholds/rwars>
+<https://www.tutorialspoint.com/r/r_json_files.htm>
+<https://github.com/Ironholds/rwars>

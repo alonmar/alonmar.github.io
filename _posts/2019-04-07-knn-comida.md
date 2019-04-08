@@ -287,3 +287,9 @@ Conclusiones
 ------------
 
 Como vimos quizás no es un algoritmo super elaborado, sin embargo es un algoritmo que es muy intuitivo y excelente para comenzar este lindo camino de la ciencia de datos y machine learning. Aquí se mostro como funciona si te gustaría profundizar más te invito a que investigues por que es importante tener variables estandarizadas.
+
+## Fuentes:
+[https://www.kdnuggets.com/2016/01/implementing-your-own-knn-using-python.html](https://www.kdnuggets.com/2016/01/implementing-your-own-knn-using-python.html)
+[https://www.saedsayad.com/k_nearest_neighbors.htm](https://www.saedsayad.com/k_nearest_neighbors.htm)
+[http://www.cs.us.es/~fsancho/?e=77](http://www.cs.us.es/~fsancho/?e=77)
+[Lantz, B. (2013). Machine learning with R. Packt Publishing Ltd.](https://www.packtpub.com/big-data-and-business-intelligence/machine-learning-r)
