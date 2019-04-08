@@ -1,7 +1,7 @@
 ---
 title: "K nearest neighbors (Con comida)"
 comments: true
-date: 2019-02-06
+date: 2019-04-07
 tags: [machine learning, data science]
 excerpt: "Machine Learning, Data Science"
 mathjax: "true"
