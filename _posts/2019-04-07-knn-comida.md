@@ -22,7 +22,7 @@ library(ggplot2)
 
 En este tutorial explicare los conceptos básicos acerca del algoritmo K vecinos cercanos (k-Nearest Neighbor) o simplemente KNN.
 
-Quizás este sea uno de los algoritmos mas sencillos en machine learning, de hecho muchos autores hacen llamar a este algoritmos como un algoritmo de **aprendizaje flojo**(lazy learning), ya que en un sentido estricto el algoritmo no esta aprendiendo, y tampoco ocurre una abstracción como tal, lo que sucede es que en la fase de entrenamiento simplemente almacena datos, por lo que no surge una abstracción del modelo, simplemente **memoriza** de tal manera que el aprendizaje sucede por memorización, haciendo muy lenta la fase de predicción.
+Quizás este sea uno de los algoritmos mas sencillos en machine learning, de hecho muchos autores hacen llamar a este algoritmos como un algoritmo de **aprendizaje flojo** "lazy learning" (Lantz, B.), ya que en un sentido estricto el algoritmo no esta aprendiendo, y tampoco ocurre una abstracción como tal, lo que sucede es que en la fase de entrenamiento simplemente almacena datos, por lo que no surge una abstracción del modelo, simplemente **memoriza** de tal manera que el aprendizaje sucede por memorización, haciendo muy lenta la fase de predicción.
 
 Sin embargo es un algoritmo muy utilizado para la clasificación ya que tiene muy buenas características que ayudan a dar un primer vistazo a los datos e inclusive ser el algoritmo final.
 
