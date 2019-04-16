@@ -16,12 +16,12 @@ El código completo lo encontraras [aquí](https://github.com/alonmar/estructura
 
 ---
 
-Normalmente cuando uno se encuentra trabajando con datos no se encuentran organizados o estructurados, y la mayor parte del tiempo radica en la estructuración de estos, por lo que a continuación veremos como:
+Normalmente cuando nos encontramos trabajando con datos en pocas ocasiones se encuentran organizados o estructurados, y la mayor parte del tiempo radica en la estructuración de estos, por lo que a continuación veremos como:
 
--   Solicitar datos de una APIweb, ya que es normal que muchos datos se entreguen de esta manera
--   Dar forma a datos en formato json para poder analizarlos, ya que muchas de las herramientas estadísticas funcionan con dataframes
+-   Solicitar datos de una APIweb, ya que es normal que muchos datos se entreguen de esta manera.
+-   Dar forma a datos en formato json para poder analizarlos, ya que muchas de las herramientas estadísticas funcionan con dataframes.
 
-Hora de ensuciarse las manos!
+### Hora de ensuciarse las manos!
 
 Primero cargaremos las librerías necesarias
 
@@ -50,7 +50,7 @@ names(json_data)
 
     ## [1] "count"    "next"     "previous" "results"
 
-Despues de consultar la api observamos cuantos personajes existen
+Después de consultar la api observamos cuantos personajes existen
 
 ``` r
 json_data$count
@@ -58,7 +58,7 @@ json_data$count
 
     ## [1] 87
 
-Como vemos son 87 por lo tanto consultaremos uno a uno la url correspondiente a cada personaje, y crearemos nuestro propio dataset, de esta manera se tendrá un mejor control en la elaboración del dataset
+Como vemos son 87 por lo tanto consultaremos uno a uno la url correspondiente a cada personaje, y crearemos nuestro propio dataset, de esta manera se tendrá un mejor control en su elaboración
 
 ``` r
 # Creamos una lista vacía para ir llenándola
@@ -205,7 +205,7 @@ planeta <-  swapi("planets")
 ```
 
 
-Ya tenemos los datos que nos interesan sin embargo al provenir de un formato json o por así decirlo "Nosql", tendremos problemas al convertir en una forma estructura por lo tanto cambiaremos algunas cosas
+Ya tenemos los datos que nos interesan sin embargo al provenir de un formato json o por así decirlo "Nosql", tendremos problemas al convertir en una forma estructura por tablas, por lo tanto cambiaremos algunas cosas
 
 ``` r
 # Pasamos de lista a dataframe
@@ -218,7 +218,7 @@ planeta_df <- do.call(rbind,planeta)  %>%  data.frame()
 especie_df <- do.call(rbind,especie) %>%  data.frame()
 ```
 
-Si observamos por ejemplo el caso de Luke Skywalker veremos que en la columna de *films* se encuentran las url a cada una de las películas en las que aparece, sin embargo es mejor solo saber el numero de la película y no la url, de manera que sea mas legible.
+Si observamos el caso de Luke Skywalker veremos que en la columna de *films* se encuentran las url a cada una de las películas en las que aparece, sin embargo es mejor solo saber el numero de la película y no la url, de manera que sea mas legible.
 
 ``` r
 personajes_df$films[[1]]
@@ -358,64 +358,52 @@ personajes_ti[c(2,3,17)] <- lapply(personajes_ti[c(2,3,17)], as.integer)
 Y este es el resultado
 
 ``` r
-personajes_ti %>% head()
+personajes_ti %>% head() %>% knitr::kable()
 ```
 
-    ## # A tibble: 6 x 17
-    ##   name  height  mass hair_color skin_color eye_color birth_year gender
-    ##   <chr>  <int> <int> <chr>      <chr>      <chr>     <chr>      <chr>
-    ## 1 Luke~    172    77 blond      fair       blue      19BBY      male  
-    ## 2 C-3PO    167    75 <NA>       gold       yellow    112BBY     <NA>  
-    ## 3 R2-D2     96    32 <NA>       white, bl~ red       33BBY      <NA>  
-    ## 4 Dart~    202   136 none       white      yellow    41.9BBY    male  
-    ## 5 Leia~    150    49 brown      light      brown     19BBY      female
-    ## 6 Owen~    178   120 brown, gr~ light      blue      52BBY      male  
-    ## # ... with 9 more variables: homeworld <chr>, films <chr>, species <chr>,
-    ## #   vehicles <chr>, starships <chr>, created <chr>, edited <chr>,
-    ## #   url <chr>, id_personajes <int>
+| name           |  height|  mass| hair\_color | skin\_color | eye\_color | birth\_year | gender | homeworld | films         | species | vehicles | starships | created                     | edited                      | url                              |  id\_personajes|
+|:---------------|-------:|-----:|:------------|:------------|:-----------|:------------|:-------|:----------|:--------------|:--------|:---------|:----------|:----------------------------|:----------------------------|:---------------------------------|---------------:|
+| Luke Skywalker |     172|    77| blond       | fair        | blue       | 19BBY       | male   | 1         | 2,6,3,1,7     | 1       | 14,30    | 1430      | 2014-12-09T13:50:51.644000Z | 2014-12-20T21:17:56.891000Z | <https://swapi.co/api/people/1/> |               1|
+| C-3PO          |     167|    75| NA          | gold        | yellow     | 112BBY      | NA     | 1         | 2,5,4,6,3,1   | 2       | NA       | NA        | 2014-12-10T15:10:51.357000Z | 2014-12-20T21:17:50.309000Z | <https://swapi.co/api/people/2/> |               2|
+| R2-D2          |      96|    32| NA          | white, blue | red        | 33BBY       | NA     | 8         | 2,5,4,6,3,1,7 | 2       | NA       | NA        | 2014-12-10T15:11:50.376000Z | 2014-12-20T21:17:50.311000Z | <https://swapi.co/api/people/3/> |               3|
+| Darth Vader    |     202|   136| none        | white       | yellow     | 41.9BBY     | male   | 1         | 2,6,3,1       | 1       | NA       | NA        | 2014-12-10T15:18:20.704000Z | 2014-12-20T21:17:50.313000Z | <https://swapi.co/api/people/4/> |               4|
+| Leia Organa    |     150|    49| brown       | light       | brown      | 19BBY       | female | 2         | 2,6,3,1,7     | 1       | 30       | 30        | 2014-12-10T15:20:09.791000Z | 2014-12-20T21:17:50.315000Z | <https://swapi.co/api/people/5/> |               5|
+| Owen Lars      |     178|   120| brown, grey | light       | blue       | 52BBY       | male   | 1         | 5,6,1         | 1       | NA       | NA        | 2014-12-10T15:52:14.024000Z | 2014-12-20T21:17:50.317000Z | <https://swapi.co/api/people/6/> |               6|
 
 ``` r
-especie_ti %>% head()
+especie_ti %>% head() %>% knitr::kable()
 ```
 
-    ## # A tibble: 6 x 16
-    ##   name  classification designation average_height skin_colors hair_colors
-    ##   <chr> <chr>          <chr>                <int> <chr>       <chr>      
-    ## 1 Human mammal         sentient               180 caucasian,~ blonde, br~
-    ## 2 Droid artificial     sentient                NA <NA>        <NA>       
-    ## 3 Wook~ mammal         sentient               210 gray        black, bro~
-    ## 4 Rodi~ sentient       reptilian              170 green, blue <NA>       
-    ## 5 Hutt  gastropod      sentient               300 green, bro~ <NA>       
-    ## 6 Yoda~ mammal         sentient                66 green, yel~ brown, whi~
-    ## # ... with 10 more variables: eye_colors <chr>, average_lifespan <int>,
-    ## #   homeworld <chr>, language <chr>, people <chr>, films <chr>,
-    ## #   created <chr>, edited <chr>, url <chr>, id_especie <int>
+| name           | classification | designation |  average\_height| skin\_colors                      | hair\_colors              | eye\_colors                             |  average\_lifespan| homeworld | language       | people                                                                                             | films         | created                     | edited                      | url                               |  id\_especie|
+|:---------------|:---------------|:------------|----------------:|:----------------------------------|:--------------------------|:----------------------------------------|------------------:|:----------|:---------------|:---------------------------------------------------------------------------------------------------|:--------------|:----------------------------|:----------------------------|:----------------------------------|------------:|
+| Human          | mammal         | sentient    |              180| caucasian, black, asian, hispanic | blonde, brown, black, red | brown, blue, green, hazel, grey, amber  |                120| 9         | Galactic Basic | 1,4,5,6,7,9,10,11,12,14,18,19,21,22,25,26,28,29,32,34,43,51,60,61,62,66,67,68,69,74,81,84,85,86,35 | 2,7,5,4,6,3,1 | 2014-12-10T13:52:11.567000Z | 2015-04-17T06:59:55.850671Z | <https://swapi.co/api/species/1/> |            1|
+| Droid          | artificial     | sentient    |               NA| NA                                | NA                        | NA                                      |                 NA| NA        | NA             | 2,3,8,23,87                                                                                        | 2,7,5,4,6,3,1 | 2014-12-10T15:16:16.259000Z | 2015-04-17T06:59:43.869528Z | <https://swapi.co/api/species/2/> |            2|
+| Wookiee        | mammal         | sentient    |              210| gray                              | black, brown              | blue, green, yellow, brown, golden, red |                400| 14        | Shyriiwook     | 13,80                                                                                              | 2,7,6,3,1     | 2014-12-10T16:44:31.486000Z | 2015-01-30T21:23:03.074598Z | <https://swapi.co/api/species/3/> |            3|
+| Rodian         | sentient       | reptilian   |              170| green, blue                       | NA                        | black                                   |                 NA| 23        | Galactic Basic | 15                                                                                                 | 1             | 2014-12-10T17:05:26.471000Z | 2016-07-19T13:27:03.156498Z | <https://swapi.co/api/species/4/> |            4|
+| Hutt           | gastropod      | sentient    |              300| green, brown, tan                 | NA                        | yellow, red                             |               1000| 24        | Huttese        | 16                                                                                                 | 3,1           | 2014-12-10T17:12:50.410000Z | 2014-12-20T21:36:42.146000Z | <https://swapi.co/api/species/5/> |            5|
+| Yoda's species | mammal         | sentient    |               66| green, yellow                     | brown, white              | brown, green, yellow                    |                900| 28        | Galactic basic | 20                                                                                                 | 2,5,4,6,3     | 2014-12-15T12:27:22.877000Z | 2014-12-20T21:36:42.148000Z | <https://swapi.co/api/species/6/> |            6|
 
 ``` r
-planeta_ti %>% head()
+planeta_ti %>% head() %>% knitr::kable()
 ```
 
-    ## # A tibble: 6 x 15
-    ##   name  rotation_period orbital_period diameter climate gravity terrain
-    ##   <chr>           <int>          <int>    <int> <chr>   <chr>   <chr>  
-    ## 1 Tato~              23            304    10465 arid    1 stan~ desert
-    ## 2 Alde~              24            364    12500 temper~ 1 stan~ grassl~
-    ## 3 Yavi~              24           4818    10200 temper~ 1 stan~ jungle~
-    ## 4 Hoth               23            549     7200 frozen  1.1 st~ tundra~
-    ## 5 Dago~              23            341     8900 murky   N/A     swamp,~
-    ## 6 Besp~              12           5110   118000 temper~ 1.5 (s~ gas gi~
-    ## # ... with 8 more variables: surface_water <int>, population <int>,
-    ## #   residents <chr>, films <chr>, created <chr>, edited <chr>, url <chr>,
-    ## #   id_planeta <int>
+| name     |  rotation\_period|  orbital\_period|  diameter| climate             | gravity                                | terrain                            |  surface\_water|  population| residents              | films     | created                     | edited                      | url                               |  id\_planeta|
+|:---------|-----------------:|----------------:|---------:|:--------------------|:---------------------------------------|:-----------------------------------|---------------:|-----------:|:-----------------------|:----------|:----------------------------|:----------------------------|:----------------------------------|------------:|
+| Tatooine |                23|              304|     10465| arid                | 1 standard                             | desert                             |               1|       2e+05| 1,2,4,6,7,8,9,11,43,62 | 5,4,6,3,1 | 2014-12-09T13:50:49.641000Z | 2014-12-21T20:48:04.175778Z | <https://swapi.co/api/planets/1/> |            1|
+| Alderaan |                24|              364|     12500| temperate           | 1 standard                             | grasslands, mountains              |              40|       2e+09| 5,68,81                | 6,1       | 2014-12-10T11:35:48.479000Z | 2014-12-20T20:58:18.420000Z | <https://swapi.co/api/planets/2/> |            2|
+| Yavin IV |                24|             4818|     10200| temperate, tropical | 1 standard                             | jungle, rainforests                |               8|       1e+03| NA                     | 1         | 2014-12-10T11:37:19.144000Z | 2014-12-20T20:58:18.421000Z | <https://swapi.co/api/planets/3/> |            3|
+| Hoth     |                23|              549|      7200| frozen              | 1.1 standard                           | tundra, ice caves, mountain ranges |             100|          NA| NA                     | 2         | 2014-12-10T11:39:13.934000Z | 2014-12-20T20:58:18.423000Z | <https://swapi.co/api/planets/4/> |            4|
+| Dagobah  |                23|              341|      8900| murky               | N/A                                    | swamp, jungles                     |               8|          NA| NA                     | 2,6,3     | 2014-12-10T11:42:22.590000Z | 2014-12-20T20:58:18.425000Z | <https://swapi.co/api/planets/5/> |            5|
+| Bespin   |                12|             5110|    118000| temperate           | 1.5 (surface), 1 standard (Cloud City) | gas giant                          |               0|       6e+06| 26                     | 2         | 2014-12-10T11:43:55.240000Z | 2014-12-20T20:58:18.427000Z | <https://swapi.co/api/planets/6/> |            6|
 
 Conclusiones
 ------------
 
-Sin duda alguna la estructuración de una base de datos en la ciencia de datos es lo menos "glamuroso" sin embargo es el paso mas importante ya que sin datos que analizar, de nada sirve el ultimo algoritmo de deeplearning, los datos en la vida real no se encuentran estructurados sin embargo aquí se mostraron formas para lograr esto, iniciando por una consulta de una API, modificando documentos Json hasta pasando por expresiones regulares y manejos de NAs incluso intentar explicar el conflicto del número en las películas de star wars.
+Sin duda alguna la ingeniería de datos (data engineering) dentro de la ciencia de datos es lo menos "glamuroso" sin embargo es el paso mas importante ya que sin datos que analizar, de nada sirve el ultimo algoritmo de deeplearning. Los datos en la vida real no se encuentran estructurados sin embargo aquí se mostraron formas para lograr esto, iniciando por una consulta de una API, modificando documentos Json hasta pasando por expresiones regulares y manejos de NAs incluso intentar explicar el conflicto del número en las películas de star wars.
 
 Te invito a que por tu cuenta hagas la solicitud a *films*, *starships*, *vehicles*. De tal manera que veas lo fácil que es!
 
-###Fuentes:
+### Fuentes:
 
 <https://www.tutorialspoint.com/r/r_json_files.htm>
 <https://github.com/Ironholds/rwars>
