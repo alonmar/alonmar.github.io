@@ -7,7 +7,7 @@ excerpt: "Machine Learning, Data Science"
 mathjax: "true"
 ---
 ---
-<img src="https://raw.githubusercontent.com/alonmar/K-nearest-neighbors-Con-comida-/master/images/autumn-on-the-seine-at-argenteuil.jpg" alt="Autumn on the Seine at Argenteuil" width="300px"/>
+<img src="https://raw.githubusercontent.com/alonmar/sistema-de-recomendacion/master/images/autumn-on-the-seine-at-argenteuil.jpg" alt="Autumn on the Seine at Argenteuil" width="300px"/>
 
 Claude Monet, Autumn on the Seine at Argenteuil (1873)
 ---
@@ -198,14 +198,17 @@ v2 %>% kable()
 
 Haremos uso del coeficiente de [**Jaccard**](https://en.wikipedia.org/wiki/Jaccard_index), siendo el cociente de la intersección de dos conjuntos entre la unión de dichos conjuntos.
 
-$$ \frac{A \bigcap B }{A \bigcup  B }$$
+$$jaccar = \frac{A \bigcap B }{A \bigcup  B }$$
 
 En otras palabras dividiremos el numero de elementos que se encuentran en ambos conjuntos entre el numero de elementos únicos de ambos conjuntos.
 
-Ejemplo: **conjunto\_A = {a,b,c,c,d}** **conjunto\_B = {b,d,e}**
+Ejemplo:
+**conjunto\_A = {a,b,c,c,d}**
+**conjunto\_B = {b,d,e}**
 
 *A*⋂*B*
  = (b,d) es decir solo tenemos **2** elementos que se encuentran en A y B
+
 *A*⋂*B*
  = (a,b,c,d,e) lo cual significa existen **5** elementos únicos en ambos conjuntos
 
