@@ -7,9 +7,9 @@ excerpt: "Machine Learning, Data Science"
 mathjax: "true"
 ---
 ---
-<img src="https://raw.githubusercontent.com/alonmar/K-nearest-neighbors-Con-comida-/master/images/autumn-on-the-seine-at-argenteuil.jpg" alt="Still Life" width="300px"/>
+<img src="https://raw.githubusercontent.com/alonmar/K-nearest-neighbors-Con-comida-/master/images/autumn-on-the-seine-at-argenteuil.jpg" alt="Autumn on the Seine at Argenteuil" width="300px"/>
 
-Henri Fantin-Latour, Still Life (1866)
+Claude Monet, Autumn on the Seine at Argenteuil (1873)
 ---
 El código completo lo encontraras [aquí](https://github.com/alonmar/sistema-de-recomendacion/blob/master/sistema-de-recomendacion.Rmd)
 
