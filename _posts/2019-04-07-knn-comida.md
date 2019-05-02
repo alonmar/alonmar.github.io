@@ -272,7 +272,7 @@ clasificador <- function(point,dataframe,k) {
                           dist=dist(point=point,alimentos[,2:3])) %>%
     arrange(dist)
 
-  #Calsificando de acuerdo al k-valor
+  #Clasificando de acuerdo al k-valor
   resultado(distancias,k)
 }
 ```
