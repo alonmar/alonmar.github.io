@@ -198,7 +198,7 @@ v2 %>% kable()
 
 Haremos uso del coeficiente de [**Jaccard**](https://en.wikipedia.org/wiki/Jaccard_index), siendo el cociente de la intersección de dos conjuntos entre la unión de dichos conjuntos.
 
-$$jaccar = \frac{A \bigcap B }{A \bigcup  B }$$
+$$jaccard = \frac{A \bigcap B }{A \bigcup  B }$$
 
 En otras palabras dividiremos el numero de elementos que se encuentran en ambos conjuntos entre el numero de elementos únicos de ambos conjuntos.
 
@@ -212,7 +212,7 @@ Ejemplo:
 *A*⋂*B*
  = (a,b,c,d,e) lo cual significa existen **5** elementos únicos en ambos conjuntos
 
-$$jaccar = \frac{2}{5} = 0.4$$
+$$jaccard = \frac{2}{5} = 0.4$$
 
 De tal manera que el índice de jaccard nos indica que el conjunto A y B son similares en **0.4** en una escala de 0 a 1
 
