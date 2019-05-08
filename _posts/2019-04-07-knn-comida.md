@@ -7,7 +7,7 @@ excerpt: "Machine Learning, Data Science"
 mathjax: "true"
 ---
 ---
-<img src="https://raw.githubusercontent.com/alonmar/K-nearest-neighbors-Con-comida-/master/images/still-life-1866.jpg" alt="Still Life" width="300px"/>
+<img src="https://raw.githubusercontent.com/alonmar/K-nearest-neighbors-Con-comida-/master/images/still-life-1866.jpg" alt="Still Life" width="400px"/>
 
 Henri Fantin-Latour, Still Life (1866)
 ---
