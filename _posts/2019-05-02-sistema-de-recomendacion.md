@@ -7,7 +7,7 @@ excerpt: "Machine Learning, Data Science"
 mathjax: "true"
 ---
 ---
-<img src="https://raw.githubusercontent.com/alonmar/sistema-de-recomendacion/master/images/autumn-on-the-seine-at-argenteuil.jpg" alt="Autumn on the Seine at Argenteuil" width="300px"/>
+<img src="https://raw.githubusercontent.com/alonmar/sistema-de-recomendacion/master/images/autumn-on-the-seine-at-argenteuil.jpg" alt="Autumn on the Seine at Argenteuil" width="400px"/>
 
 Claude Monet, Autumn on the Seine at Argenteuil (1873)
 ---
@@ -349,7 +349,7 @@ recomendacion("190",data_matrix)
 Conclusiones
 ------------
 
-Este es nuestro primer ejemplo de algoritmo *No clasificado* y nuestro primer sistema de recomendación, es un ejemplo excelente para comprender ambos conceptos y como vimos en la medida que obtengamos mas data acerca de los intereses de los usuarios las recomendaciones serán mejor dadas. Te invito a que elijas un usuario y veas que recomendaciones existen para él, y también te invito a que en lugar de lugares visitados mas de una vez sean mas de 5 veces ¿Qué implicaciones tendrá? y ¿mas de 10 veces?.
+Este es nuestro primer ejemplo de algoritmo *No supervisado* y nuestro primer sistema de recomendación, es un ejemplo excelente para comprender ambos conceptos y como vimos en la medida que obtengamos mas data acerca de los intereses de los usuarios las recomendaciones serán mejor dadas. Te invito a que elijas un usuario y veas que recomendaciones existen para él, y también te invito a que en lugar de lugares visitados mas de una vez sean mas de 5 veces ¿Qué implicaciones tendrá? y ¿mas de 10 veces?.
 
 Fuentes
 -------
