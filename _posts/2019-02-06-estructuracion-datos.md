@@ -386,6 +386,13 @@ especie_ti %>% head() %>% knitr::kable()
 ``` r
 planeta_ti %>% head() %>% knitr::kable()
 ```
+<style>
+.scrollme {
+    overflow-y: auto;
+}
+</style>
+
+<div class="scrollme">   
 
 | name     |  rotation\_period|  orbital\_period|  diameter| climate             | gravity                                | terrain                            |  surface\_water|  population| residents              | films     | created                     | edited                      | url                               |  id\_planeta|
 |:---------|-----------------:|----------------:|---------:|:--------------------|:---------------------------------------|:-----------------------------------|---------------:|-----------:|:-----------------------|:----------|:----------------------------|:----------------------------|:----------------------------------|------------:|
@@ -396,6 +403,7 @@ planeta_ti %>% head() %>% knitr::kable()
 | Dagobah  |                23|              341|      8900| murky               | N/A                                    | swamp, jungles                     |               8|          NA| NA                     | 2,6,3     | 2014-12-10T11:42:22.590000Z | 2014-12-20T20:58:18.425000Z | <https://swapi.co/api/planets/5/> |            5|
 | Bespin   |                12|             5110|    118000| temperate           | 1.5 (surface), 1 standard (Cloud City) | gas giant                          |               0|       6e+06| 26                     | 2         | 2014-12-10T11:43:55.240000Z | 2014-12-20T20:58:18.427000Z | <https://swapi.co/api/planets/6/> |            6|
 
+</div>
 Conclusiones
 ------------
 
