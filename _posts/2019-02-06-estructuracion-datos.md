@@ -404,6 +404,7 @@ planeta_ti %>% head() %>% knitr::kable()
 | Bespin   |                12|             5110|    118000| temperate           | 1.5 (surface), 1 standard (Cloud City) | gas giant                          |               0|       6e+06| 26                     | 2         | 2014-12-10T11:43:55.240000Z | 2014-12-20T20:58:18.427000Z | <https://swapi.co/api/planets/6/> |            6|
 
 </div>
+
 Conclusiones
 ------------
 
